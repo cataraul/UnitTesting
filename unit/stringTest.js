@@ -33,3 +33,57 @@ describe("Testing strings - equality/starts with/ends with/length",function(){
         unit.string(func.return_string()).hasLength(23);
     })
 })
+
+describe("Testing strings with match", function(){
+    //exact match
+    it('should match', function () {
+        unit.string(func.return_string()).match("This is indeed a string");
+        //can be used with regex aswell
+        unit.string(func.return_string()).match(/indeed/);
+    });
+
+    it('should not match with a regular expression', function () {
+        unit.string(func.return_string()).notMatch(/notAWord/);
+    });
+
+    it('string value should match custom function', function () {
+        unit.string(func.return_string()).match(function(it) {
+        	return it === "This is indeed a string";
+        });
+    }); 
+
+    it('should match each in a list', function () {
+        unit.string(func.return_string()).matchEach([/indeed/i, 'string', function(it) {
+        	return it === "This is indeed a string";
+        }]);
+    });
+
+    it('string has value', function(){
+        unit.string(func.return_string()).hasValue('indeed');
+    });
+
+    it('string has values', function(){
+        unit.string(func.return_string()).hasValues('indeed', 'string');
+    });
+
+    it('string contains', function(){
+        unit.string(func.return_string()).contains('indeed', 'string');
+    });             
+});
+
+
+describe("Testing strings with match, case-sensitivity", function(){
+
+    it('string has values, not case-sensitive', function(){
+        unit.string(func.return_string()).hasValues('indeed', 'this');
+    });
+
+    //Case insensitive
+    it('string has values', function(){
+        unit.string(func.return_string()).hasValues('indeed', 'this');
+    });                
+
+    it('string contains is case-sensitive', function(){
+        unit.string(func.return_string()).contains('indeed', 'This');
+    });             
+});
