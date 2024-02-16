@@ -1,5 +1,5 @@
 function return_string(){
-    var mgs = "Happy New Year!";
+    let mgs = "This is indeed a string";
     return mgs;
 }
 function perform_add(a,b){
