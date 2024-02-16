@@ -81,7 +81,7 @@ class Shape{
 }
 
 class Rectangle extends Shape{
-    contructor(color){
+    constructor(color){
         super("rectangle",color);
     }
 }
