@@ -4,7 +4,7 @@ let func = require('../code.js');
 
 describe("Function testing equality", function() {
 
-    var ref_func = func.perform_add;
+    let ref_func = func.perform_add;
 
     it('function testing with is and isNot', function(){
         unit.function(ref_func).is(func.perform_add);
